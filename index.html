@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>WHAT2COOK</title>
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+
+</head>
+<body>
+  <script type="text/x-handlebars">
+    <div class="navbar">
+      <div class="navbar-inner">
+        <a class="brand" href="#">WHAT2COOK</a>
+        <ul class="nav">
+         <li>{{#link-to 'receitas'}}Receitas{{/link-to}}</li>
+         <li>{{#link-to 'about'}}About{{/link-to}}</li>
+        </ul>
+      </div>
+    </div>
+    {{outlet}}
+  </script>
+
+  <script type="text/x-handlebars" id="receitas">
+    <div class="countainer-fluid">
+      <div class="row-fluid">
+        <div class="span3">
+          <table class='table'>
+            <thread>
+              <tr><th>Receitas</th></tr>
+            </thread>
+            {{/each}}
+            <tr><td>
+                {{title}} <small class='muted'>by {{author.name}}</small>
+            </td></tr>
+            {{/each}}
+          </table>
+        </div>
+        <div class="span9">
+          {{outlet}}
+        </div>
+      </div>
+    </div>
+  </script>
+  
+  <script type="text/x-handlebars" id="about">
+   <!--About - Português-->
+    <div class='about'>
+    <p><a href="http://youtu.be/IBH4g_ua5es"><h3>olá</h3></a></p>
+    <p> Esta é a minha primeira aplicação web usando <a href="http://emberjs.com">Ember js </a> e o meu primeiro trabalho extra faculdade.</p>
+    <p><b>WHAT2COOK</b> terá como objectivo guardar receitas de forma simples e rápida, adicionando uma funcionalidade que será surpresa até estar concluída. Novidades em breve.</p>
+    <p>Obrigado pela visita.</p>
+    </div><hr><br>
+   <!--About - Inglês-->
+   <div class='about'>
+    <p><a href="http://youtu.be/IBH4g_ua5es"><h3>hi</h3></a></p>
+    <p> This is not only my first web app using <a href="http://emberjs.com">Ember js </a>, but also my first project outside college.</p>
+    <p><b>WHAT2COOK</b> shall aim to keep recipes fast and simple, adding a feature that will be a surprise until it is completed.News soon.</p>
+    <p>Thanks for the visit.</p>
+    </div><hr><br>
+  </script>
+
+  <script src="js/libs/jquery-1.10.2.js"></script>
+  <script src="js/libs/handlebars-1.1.2.js"></script>
+  <script src="js/libs/ember-1.6.1.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/showdown/0.3.1/showdown.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.1.0/moment.min.js"></script>
+  <script src="js/app.js"></script>
+  <!-- to activate the test runner, add the "?test" query string parameter -->
+  <script src="tests/runner.js"></script>
+</body>
+</html>

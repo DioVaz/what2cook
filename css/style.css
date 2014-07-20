@@ -1,0 +1,8 @@
+/* Put your CSS here */
+.ember-application {
+    margin: 30px;
+}
+
+.active{
+	font-weight: bold;
+}
