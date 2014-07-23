@@ -32,7 +32,9 @@
             </thread>
             {{#each}}
             <tr><td>
+              {{#link-to 'recipe' this}}
                 {{title}} <small class='muted'>by {{author.name}}</small>
+              {{/link-to}}
             </td></tr>
             {{/each}}
           </table>
@@ -46,15 +48,17 @@
 
   <script type="text/x-handlebars" id="recipe">
     <h1>{{title}}</h1>
-    <h2>by {{author.name}} <small class="muted">({{date}}) </small></h2>
-
-    <hr>
+    <h2><small class="muted">by {{author.name}}  </small></h2>
 
     <div class='intro'>
-      {{descripion}}
+      <em>{{date}}</em>
     </div>
+    <hr>
     <div class='below-the-fold'>
+    <h5>Ingredients:</h5>
       {{ingredients}}
+    <h5>Preparation</h5>
+      {{description}}
     </div>
   </script>
   
