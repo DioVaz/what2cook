@@ -14,7 +14,7 @@
       <div class="navbar-inner">
         <a class="brand" href="#">WHAT2COOK</a>
         <ul class="nav">
-         <li>{{#link-to 'receitas'}}Receitas{{/link-to}}</li>
+         <li>{{#link-to 'recipes'}}Recipes{{/link-to}}</li>
          <li>{{#link-to 'about'}}About{{/link-to}}</li>
         </ul>
       </div>
@@ -22,15 +22,15 @@
     {{outlet}}
   </script>
 
-  <script type="text/x-handlebars" id="receitas">
-    <div class="countainer-fluid">
+  <script type="text/x-handlebars" id="recipes">
+    <div class="container-fluid">
       <div class="row-fluid">
         <div class="span3">
           <table class='table'>
             <thread>
-              <tr><th>Receitas</th></tr>
+              <tr><th>Recipes</th></tr>
             </thread>
-            {{/each}}
+            {{#each}}
             <tr><td>
                 {{title}} <small class='muted'>by {{author.name}}</small>
             </td></tr>
@@ -41,6 +41,20 @@
           {{outlet}}
         </div>
       </div>
+    </div>
+  </script>
+
+  <script type="text/x-handlebars" id="recipe">
+    <h1>{{title}}</h1>
+    <h2>by {{author.name}} <small class="muted">({{date}}) </small></h2>
+
+    <hr>
+
+    <div class='intro'>
+      {{descripion}}
+    </div>
+    <div class='below-the-fold'>
+      {{ingredients}}
     </div>
   </script>
   
