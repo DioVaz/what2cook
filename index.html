@@ -47,19 +47,34 @@
   </script>
 
   <script type="text/x-handlebars" id="recipe">
+    <!-- editing mode -->
+    {{#if isEditing}}
+      {{partial 'recipe/edit'}}
+      <button {{action 'doneEditing'}}> Done </button>
+    {{else}}
+      <button {{action 'edit'}}> Edit </button>
+    {{/if}}
+
+    <!-- RecipeTemplate -->
     <h1>{{title}}</h1>
     <h2><small class="muted">by {{author.name}}  </small></h2>
 
     <div class='intro'>
-      <em>{{date}}</em>
+      <em>{{format-date date}}</em>
     </div>
     <hr>
     <div class='below-the-fold'>
     <h5>Ingredients:</h5>
-      {{ingredients}}
+      {{format-markdown ingredients}}
     <h5>Preparation</h5>
-      {{description}}
+      {{format-markdown description}}
     </div>
+  </script>
+
+  <script type="text/x-handlebars" id="recipe/_edit">
+    <p>{{input type="text" value=title}}</p>
+    <p>{{input type="text" value=ingredients}}</p>
+    <p>{{textarea value=description}}</p>
   </script>
   
   <script type="text/x-handlebars" id="about">

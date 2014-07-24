@@ -2,14 +2,45 @@ App = Ember.Application.create();
 
 App.Router.map(function() {
   this.resource('about');
-  this.resource('recipes');
-  this.resource('recipe', {path: ':post_id'});
+  this.resource('recipes', function() {
+  	this.resource('recipe', {path: ':post_id'});
+  });
 });
 
 App.RecipesRoute = Ember.Route.extend({
 	model: function() {
 		return posts;
 	}
+});
+
+App.RecipeRoute = Ember.Route.extend({
+	model: function(params) {
+		return posts.findBy('id', params.post_id);
+	}
+});
+
+App.RecipeController = Ember.ObjectController.extend({
+	isEditing: false,
+
+	actions:{
+		edit: function(){
+			this.set('isEditing', true);
+		},
+
+		doneEditing: function() {
+			this.set('isEditing', false);
+		}
+	}
+});
+
+Ember.Handlebars.helper('format-date', function(date){
+	return moment (date).fromNow();
+});
+
+var showdown = new Showdown.converter();
+
+Ember.Handlebars.helper ('format-markdown', function(input) {
+	return new Handlebars.SafeString(showdown.makeHtml(input));
 });
 
 var posts = [{
